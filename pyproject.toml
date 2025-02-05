@@ -1,0 +1,75 @@
+[project]
+name = "nadstresnica"
+version = "0.1.0"
+description = "Analiza Dokumentacije o padu nadstresnice u Novom Sadu"
+authors = [
+    {name = "DeanChugall",email = "info@dejan.pro"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+package-mode = true
+
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.1.0"
+ruff = "^0.9.4"
+pytest = "^8.3.4"
+
+#################################################
+# Ruff config
+#################################################
+
+[tool.ruff]
+
+line-length = 160
+
+# Enable Pyflakes `E` and `F` codes by default
+lint.select = ["E", "F", "I001", "PT", "UP", "B", "SIM", "I", "C4"]
+lint.ignore = ["E501", "F811", "SIM102"]
+respect-gitignore = true
+
+lint.per-file-ignores = {}
+
+# Allow unused variables when underscore-prefixed
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10
+max-complexity = 10
+
+#################################################
+# Pytest config
+#################################################
+
+[tool.pytest.ini_options]
+minversion = "8.3.3"
+addopts = "-s -p no:warnings"
+python_files = [
+    "tests.py",
+    "test_*.py",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:jupyter_client.connect",
+]
+# ==== Coverage ====
+[tool.coverage.run]
+include = ["contentpulse/**"]
+omit = ["*/migrations/*", "*/tests/*"]
+plugins = ["django_coverage_plugin"]
+
+#################################################
+# Setuptools config
+#################################################
+
+[tool.setuptools.packages.find]
+where = ["."]  # ["."] by default
