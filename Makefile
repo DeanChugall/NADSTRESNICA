@@ -40,4 +40,4 @@ quality:
 	ruff check .
 
 test:
-	poetry run pytest
+	poetry run pytest -v -s

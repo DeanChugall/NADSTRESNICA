@@ -14,7 +14,10 @@ dependencies = [
     "pytesseract (>=0.3.13,<0.4.0)",
     "pillow (>=11.1.0,<12.0.0)",
     "pdf2image (>=1.17.0,<2.0.0)",
-    "pymupdf (>=1.25.2,<2.0.0)"
+    "pymupdf (>=1.25.2,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "beautifulsoup4 (>=4.13.3,<5.0.0)",
+    "extract-msg (>=0.53.1,<0.54.0)"
 ]
 
 [build-system]
